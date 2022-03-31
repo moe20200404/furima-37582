@@ -41,7 +41,7 @@ has_one :order
 | Column          | Type      | Options     |
 |-----------------|-----------|-------------|
 | card_info       | string    | null: false |
-| postal_code     |     | null: false |
+| postal_code     | string    | null: false |
 | prefecture      | string    | null: false |
 | city            | string    | null: false |
 | addresses       | string    | null: false |
