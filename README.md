@@ -19,15 +19,16 @@ has_many :orders
 
 ## items
 
-| Column                  | Type      | Options     |
-|-------------------------|-----------|-------------|
-| name                    | string    | null: false |
-| info                    | text      | null: false |
-| category_id             | integer   | null: false |
-| shopping_fee_status_id  | integer   | null: false |
-| prefecture_id           | integer   | null: false |
-| scheduled_delivery_id   | integer   | null: false |
-| price                   | integer   | null: false |
+| Column                  | Type      | Options                        |
+|-------------------------|-----------|--------------------------------|
+| name                    | string    | null: false                    |
+| info                    | text      | null: false                    |
+| category_id             | integer   | null: false                    |
+| status_id               | integer   | null: false                    |
+| shopping_fee_status_id  | integer   | null: false                    |
+| prefecture_id           | integer   | null: false                    |
+| scheduled_delivery_id   | integer   | null: false                    |
+| price                   | integer   | null: false                    |
 | user                    | reference | null: false, foreign_key: true |
 
 
@@ -46,7 +47,7 @@ has_one_attached :image
 ### Association
 belongs_to :user
 belongs_to :item
-has_one :deliveries
+has_one :delivery
 
 
 ## deliveries
