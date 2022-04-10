@@ -8,6 +8,8 @@ class Item < ApplicationRecord
   belongs_to :shopping_fee_status
   belongs_to :prefecture
   belongs_to :scheduled_delivery
+  
+  validates :image,                   presence: true
 
   validates :name,                    presence: true
 
@@ -32,4 +34,5 @@ class Item < ApplicationRecord
                                       numericality: { only_intenger: true, greater_than: 300, less_than: 9999999 }
   
   validates :user,                    presence: true
+
 end
