@@ -31,7 +31,6 @@
 
 #       # select(@user.birth_date.year.to_s, from: 'user[birth_date(1i)]')
 
-
 #       select(@item.status_id.to_s, from: 'item[status_id]')
 #       binding.pry
 #       select(@item.shopping_fee_status_id.to_s, from: 'item[shopping_fee_status_id]')
@@ -49,7 +48,6 @@
 #     it '販売手数料と販売利益は、小数点以下を切り捨てて表示すること。' do
 
 #     end
-
 
 #   end
 # end

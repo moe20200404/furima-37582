@@ -116,5 +116,3 @@ RSpec.describe 'ユーザーログアウト', type: :system do
     expect(page).to have_content('ログイン')
   end
 end
-
-
