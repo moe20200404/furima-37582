@@ -27,6 +27,7 @@ class Item < ApplicationRecord
   validates :scheduled_delivery_id,   presence: true,
                                       numericality: { other_than: 1 , message: "can't be blank"}
                                                        
-  validates :price,                   presence: true 
+  validates :price,                   numericality: { only_intenger: true, greater_than: 300, less_than: 9999999 }
+  
   validates :user,                    presence: true
 end
