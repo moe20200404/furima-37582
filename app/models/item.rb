@@ -33,6 +33,4 @@ class Item < ApplicationRecord
   validates :price,                   presence: true
   validates :price,                   numericality: { only_intenger: true, greater_than: 300, less_than: 9_999_999 },
                                       allow_blank: true
-
-  validates :user,                    presence: true
 end
