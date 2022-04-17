@@ -10,14 +10,14 @@ class OrderDelivery
 
   validates :city,           presence: true
   validates :addresses,      presence: true
-  validates :building,       
+  # validates :building,       
   validates :phone_number,   presence: true
   validates :phone_number,   format: { with: /\A\d{11}\z/ }, allow_blank: true
 
   validates :order,          presence: true
 
   def save
-    order = Order.create(user_id: current_user.id, item_id: order.item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     Delivery.createcreate(postal_code: postal_code, prefecture_id: prefecture_id, city: city, adrreses: addresses, building: building, phone_number: phone_number, order_id: order.id)
   end
 end
