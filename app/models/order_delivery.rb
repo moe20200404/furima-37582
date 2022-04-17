@@ -3,7 +3,7 @@ class OrderDelivery
     attr_accessor :postal_code, :prefecture_id, :city, :addresses, :building ,:phone_number ,:user_id, :item_id
 
   validates :postal_code,    presence: true
-  validates :postal_code,    format: { with: /\A\d{3}-\d{4}\z/ }, allow_blank: true
+  validates :postal_code,    format: { with: /\A\d{3}-\d{4}\z/, message: "input correctly"}
 
   validates :prefecture_id,  presence: true
   validates :prefecture_id,  numericality: { other_than: 1, message: "can't be blank" }, allow_blank: true
@@ -12,7 +12,7 @@ class OrderDelivery
   validates :addresses,      presence: true
   # validates :building,       
   validates :phone_number,   presence: true
-  validates :phone_number,   format: { with: /\A\d{11}\z/ }, allow_blank: true
+  validates :phone_number,   format: { with: /\A\d{11}\z/, message: "input only number"}
 
   def save
     binding.pry
