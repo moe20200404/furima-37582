@@ -52,5 +52,10 @@ RSpec.describe OrderDelivery, type: :model do
       @order_delivery.valid?
       expect(@order_delivery.errors.full_messages).to include("Phone number input only number")
     end
+    it 'PAYJPのtokenがなければ、保存できない' do
+      @order_delivery.token = ""
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include("Token can't be blank")
+    end
   end
 end
