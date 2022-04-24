@@ -4,12 +4,12 @@ class OrdersController < ApplicationController
   before_action :orderd_item, only: [:index, :create]
 
   def index
-    redirect_to root_path if @item.user != current_user
+    redirect_to root_path if @item.user = current_user
     @order_delivery = OrderDelivery.new
   end
 
   def create
-    redirect_to root_path if @item.user != current_user
+    redirect_to root_path if @item.user = current_user
     @order_delivery = OrderDelivery.new(params_order)
     if @order_delivery.valid?
       pay_item
