@@ -47,15 +47,35 @@ RSpec.describe OrderDelivery, type: :model do
       @order_delivery.valid?
       expect(@order_delivery.errors.full_messages).to include("Phone number can't be blank")
     end
-    it '電話番号は、10桁以上11桁以内の半角数値でないと保存できない（良い例：09012345678　良くない例：090-1234-5678）。' do
+    it '電話番号は、半角数値でないと保存できない（良い例：09012345678　良くない例：090-1234-5678）。' do
       @order_delivery.phone_number = '090-1234-5678'
       @order_delivery.valid?
       expect(@order_delivery.errors.full_messages).to include('Phone number input only number')
+    end
+    it '電話番号が9桁以下では保存できない' do
+      @order_delivery.phone_number = '090123456'
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
+    end
+    it '電話番号は、12桁以上では保存できない' do
+      @order_delivery.phone_number = '090123456789'
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
     it 'PAYJPのtokenがなければ、保存できない' do
       @order_delivery.token = ''
       @order_delivery.valid?
       expect(@order_delivery.errors.full_messages).to include("Token can't be blank")
+    end
+    it 'user_idがなければ、保存できない' do
+      @order_delivery.user_id = nil
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idがなければ、保存できない' do
+      @order_delivery.item_id = nil
+      @order_delivery.valid?
+      expect(@order_delivery.errors.full_messages).to include("Item can't be blank")
     end
   end
 end
