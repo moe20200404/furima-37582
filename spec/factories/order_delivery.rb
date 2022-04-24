@@ -1,9 +1,6 @@
 FactoryBot.define do
   factory :order_delivery do
-    postal_code do
-      Faker::Number.leading_zero_number(digits: 3)
-      + '-' + Faker::Number.leading_zero_number(digits: 4)
-    end
+    postal_code {Faker::Number.leading_zero_number(digits: 3) + '-' + Faker::Number.leading_zero_number(digits: 4)}
     prefecture_id  { Faker::Number.between(from: 2, to: 49) }
     city           { Faker::Lorem.word }
     addresses      { Faker::Lorem.word }
