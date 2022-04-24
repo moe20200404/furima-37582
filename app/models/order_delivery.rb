@@ -12,7 +12,7 @@ class OrderDelivery
   validates :addresses,      presence: true
   # validates :building,       
   validates :phone_number,   presence: true
-  validates :phone_number,   format: { with: /\A\d{11}\z/, message: "input only number"}
+  validates :phone_number,   format: { with: /\A\d{10,11}\z/, message: "input only number"}
 
   def save
     binding.pry
