@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :orderd_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @order_delivery = OrderDelivery.new
   end
   def create
     @order_delivery = OrderDelivery.new(params_order)
-    @item = Item.find(params[:item_id])
     if @order_delivery.valid?
       pay_item
       @order_delivery.save
@@ -28,5 +30,15 @@ private
       card: params_order[:token],
       currency: 'jpy'
     )
+  end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def orderd_item
+    @orderd_item = Order.pluck(:item_id)
+    if @orderd_item.include?(@item.id)
+      redirect_to root_path
+    end
   end
 end
