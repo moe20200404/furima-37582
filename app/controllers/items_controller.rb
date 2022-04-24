@@ -61,8 +61,6 @@ class ItemsController < ApplicationController
 
   def orderd_item
     @orderd_item = Order.pluck(:item_id)
-    if @orderd_item.include?(@item.id)
-      redirect_to root_path
-    end
+    redirect_to root_path if @orderd_item.include?(@item.id)
   end
 end
