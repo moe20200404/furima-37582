@@ -19,6 +19,6 @@ class Item < ApplicationRecord
     validates :shopping_fee_status_id,  numericality: { other_than: 1, message: "can't be blank" }, allow_blank: true
     validates :prefecture_id,           numericality: { other_than: 1, message: "can't be blank" }, allow_blank: true
     validates :scheduled_delivery_id,   numericality: { other_than: 1, message: "can't be blank" }, allow_blank: true
-    validates :price,                   numericality: { only_intenger: true, greater_than: 300, less_than: 9_999_999 }
+    validates :price,                   numericality: { only_intenger: true, greater_than: 299, less_than: 10_000_000 }
   end
 end
