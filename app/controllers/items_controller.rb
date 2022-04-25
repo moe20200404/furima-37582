@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :orderd_item, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.order('created_at DESC')
+    @orderd_item = Order.pluck(:item_id)
   end
 
   def new
@@ -20,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @orderd_item = Order.pluck(:item_id)
   end
 
   def edit
@@ -54,5 +57,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def orderd_item
+    @orderd_item = Order.pluck(:item_id)
+    redirect_to root_path if @orderd_item.include?(@item.id)
   end
 end
